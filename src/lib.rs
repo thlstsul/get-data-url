@@ -1,6 +1,6 @@
 use std::fmt::Display;
 
-use base64_url::encode;
+use base64::{Engine as _, engine::general_purpose::STANDARD};
 use mime::Mime;
 use percent_encoding::{NON_ALPHANUMERIC, percent_encode};
 pub use reqwest::Error;
@@ -33,7 +33,7 @@ impl Display for DataUrl {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         let encoding = if self.base64_encoded { ";base64" } else { "" };
         let data = if self.base64_encoded {
-            encode(&self.data)
+            STANDARD.encode(&self.data)
         } else {
             // 对于非 base64 编码，需要确保数据是 URL 安全的
             percent_encode(&self.data, NON_ALPHANUMERIC).to_string()
@@ -117,7 +117,7 @@ mod tests {
         assert!(data.base64_encoded);
         assert_eq!(data.data, b"Hello, World!");
 
-        let expected_string = "data:text/plain;base64,SGVsbG8sIFdvcmxkIQ";
+        let expected_string = "data:text/plain;base64,SGVsbG8sIFdvcmxkIQ==";
         assert_eq!(data.to_string(), expected_string);
     }
 

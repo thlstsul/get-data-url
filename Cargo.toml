@@ -1,6 +1,6 @@
 [package]
 name = "get-data-url"
-version = "0.1.0"
+version = "0.2.0"
 edition = "2024"
 description = "A library to fetch HTTP resources and convert them to Data URLs"
 repository = "https://github.com/thlstsul/get-data-url"
@@ -9,7 +9,7 @@ keywords = ["http", "data-url", "base64", "encoding"]
 categories = ["web-programming", "encoding"]
 
 [dependencies]
-base64-url = "3.0.0"
+base64 = "0.22.1"
 mime = "0.3.17"
 percent-encoding = "2.3.1"
 reqwest = "0.12.23"
