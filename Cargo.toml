@@ -1,0 +1,19 @@
+[package]
+name = "get-data-url"
+version = "0.1.0"
+edition = "2024"
+description = "A library to fetch HTTP resources and convert them to Data URLs"
+repository = "https://github.com/thlstsul/get-data-url"
+license = "MIT OR Apache-2.0"
+keywords = ["http", "data-url", "base64", "encoding"]
+categories = ["web-programming", "encoding"]
+
+[dependencies]
+base64-url = "3.0.0"
+mime = "0.3.17"
+percent-encoding = "2.3.1"
+reqwest = "0.12.23"
+
+[dev-dependencies]
+tokio = { version = "1.0", features = ["macros", "test-util"] }
+wiremock = "0.6.4"
